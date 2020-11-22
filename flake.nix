@@ -7,6 +7,7 @@
       packages.x86_64-linux = {
         flux2 = pkgs.callPackage ./flux.nix { };
         tanka = pkgs.callPackage ./tanka.nix { };
+        tkn = pkgs.callPackage ./tkn.nix { };
       };
 
       defaultPackage.x86_64-linux = pkgs.linkFarmFromDrvs "helm-charts-packages"
