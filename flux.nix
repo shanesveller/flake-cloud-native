@@ -2,25 +2,25 @@
 
 buildGoModule rec {
   pname = "flux2";
-  version = "0.3.0";
+  version = "0.4.1";
 
   # https://github.com/fluxcd/flux2/releases/latest
-  # https://github.com/fluxcd/flux2/releases/tag/v0.3.0
-  # nix-prefetch-url --unpack https://github.com/fluxcd/flux2/archive/v0.3.0.tar.gz
+  # https://github.com/fluxcd/flux2/releases/tag/v0.4.1
+  # nix-prefetch-url --unpack https://github.com/fluxcd/flux2/archive/v0.4.1.tar.gz
   src = fetchFromGitHub {
     owner = "fluxcd";
     repo = "flux2";
     rev = "v${version}";
-    sha256 = "0hcxcfbkiaq06g0z5fkp0g91xl37gj5hf7ccn34zz62vij62cl5n";
+    sha256 = "0djb1kwh16am4dvrfz0h8r9sa5r31bb96189lph7vjgqybj783xy";
   };
 
-  vendorSha256 = "TrEppwzWEkl8EKZUWq+66LlOzp0T5PZSjFZIW1Zbo48=";
+  vendorSha256 = "DYyEYrL1PlnzIUTCr15c6Gx/Yph0ustpCRe8cDWAR4c=";
 
   subPackages = [ "cmd/flux" ];
 
   doCheck = false;
 
-  # https://github.com/fluxcd/flux2/blob/v0.3.0/.goreleaser.yml#L6
+  # https://github.com/fluxcd/flux2/blob/v0.4.1/.goreleaser.yml#L6
   buildFlagsArray = [ "-ldflags=-s -w -X main.VERSION=${version}" ];
 
   nativeBuildInputs = [ installShellFiles ];
