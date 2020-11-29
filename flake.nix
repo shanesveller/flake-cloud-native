@@ -4,16 +4,17 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.nixpkgs.url = "nixpkgs/nixos-20.09";
 
-  outputs = { self, nixpkgs }:
-    let pkgs = import nixpkgs { system = "x86_64-linux"; };
-    in {
-      packages.x86_64-linux = {
-        flux2 = pkgs.callPackage ./flux.nix { };
-        tanka = pkgs.callPackage ./tanka.nix { };
-        tkn = pkgs.callPackage ./tkn.nix { };
-      };
+  outputs = { self, flake-utils, nixpkgs }:
+    flake-utils.lib.eachSystem [ "x86_64-darwin" "x86_64-linux" ] (system:
+      let pkgs = import nixpkgs { inherit system; };
+      in {
+        packages = {
+          flux2 = pkgs.callPackage ./flux.nix { };
+          tanka = pkgs.callPackage ./tanka.nix { };
+          tkn = pkgs.callPackage ./tkn.nix { };
+        };
 
-      defaultPackage.x86_64-linux = pkgs.linkFarmFromDrvs "helm-charts-packages"
-        (builtins.attrValues self.packages.x86_64-linux);
-    };
+        defaultPackage = pkgs.linkFarmFromDrvs "helm-charts-packages"
+          (builtins.attrValues self.packages."${system}");
+      });
 }
