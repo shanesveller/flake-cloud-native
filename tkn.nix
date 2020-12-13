@@ -1,7 +1,8 @@
 { buildGoModule, fetchFromGitHub, lib, installShellFiles }:
-buildGoModule rec {
+let version = "0.14.0";
+in buildGoModule {
   pname = "tkn";
-  version = "0.14.0";
+  inherit version;
 
   # https://github.com/tektoncd/cli/releases/latest
   # https://github.com/tektoncd/cli/releases/tag/v0.14.0

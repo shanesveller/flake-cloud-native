@@ -1,9 +1,10 @@
 # based on upstream
 { buildGoModule, fetchFromGitHub, lib, installShellFiles }:
 
-buildGoModule rec {
+let version = "0.12.0";
+in buildGoModule {
   pname = "tanka";
-  version = "0.12.0";
+  inherit version;
 
   # https://github.com/grafana/tanka/releases/latest
   # https://github.com/grafana/tanka/releases/tag/v0.12.0

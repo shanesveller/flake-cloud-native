@@ -1,8 +1,9 @@
 { buildGoModule, fetchFromGitHub, lib, installShellFiles }:
 
-buildGoModule rec {
+let version = "0.5.4";
+in buildGoModule {
   pname = "flux2";
-  version = "0.5.4";
+  inherit version;
 
   # https://github.com/fluxcd/flux2/releases/latest
   # https://github.com/fluxcd/flux2/releases/tag/v0.5.4
