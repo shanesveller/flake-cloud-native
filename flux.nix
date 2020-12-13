@@ -34,10 +34,11 @@ in buildGoModule {
   '';
 
   meta = with lib; {
-    description = "Kubernetes toolkit for assembling CD pipelines the GitOps way";
+    description =
+      "Kubernetes toolkit for assembling CD pipelines the GitOps way";
     homepage = "https://github.com/fluxcd/flux2";
     license = licenses.asl20;
-    maintainers = [];
+    maintainers = [ ];
     platforms = platforms.unix;
   };
 }
