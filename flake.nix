@@ -10,6 +10,7 @@
       in {
         packages = {
           flux2 = pkgs.callPackage ./flux.nix { };
+          nova = pkgs.callPackage ./nova.nix { };
           tanka = pkgs.callPackage ./tanka.nix { };
           tkn = pkgs.callPackage ./tkn.nix { };
         };
