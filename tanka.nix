@@ -1,19 +1,19 @@
 # based on upstream
 { buildGoModule, fetchFromGitHub, lib, installShellFiles }:
 
-let version = "0.12.0";
+let version = "0.13.0";
 in buildGoModule {
   pname = "tanka";
   inherit version;
 
   # https://github.com/grafana/tanka/releases/latest
-  # https://github.com/grafana/tanka/releases/tag/v0.12.0
-  # nix-prefetch-url --unpack https://github.com/grafana/tanka/archive/v0.12.0.tar.gz
+  # https://github.com/grafana/tanka/releases/tag/v0.13.0
+  # nix-prefetch-url --unpack https://github.com/grafana/tanka/archive/v0.13.0.tar.gz
   src = fetchFromGitHub {
     owner = "grafana";
     repo = "tanka";
     rev = "v${version}";
-    sha256 = "1f67b236njz1qdxjyf2568vkigjmpylqlra29jlgm6vhd5qky7ia";
+    sha256 = "1vmid8fjnv6hai6629n0mf1bf36rpzbqc23gf1mj3rq38xd02zf0";
   };
 
   vendorSha256 = "BnhKrrPgIQQMJkYley2/LmNRcAGOkpM4jpvREF4xIt8=";
