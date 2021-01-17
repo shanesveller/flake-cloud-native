@@ -21,7 +21,8 @@ in buildGoModule {
   doCheck = false;
 
   meta = with lib; {
-    description = "Find outdated or deprecated Helm charts running in your cluster.";
+    description =
+      "Find outdated or deprecated Helm charts running in your cluster.";
     homepage = "https://github.com/FairwindsOps/nova";
     license = licenses.asl20;
     maintainers = [ ];
