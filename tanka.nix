@@ -1,26 +1,27 @@
 # based on upstream
 { buildGoModule, fetchFromGitHub, lib, installShellFiles }:
 
-let version = "0.13.0";
+let version = "0.14.0";
 in buildGoModule {
   pname = "tanka";
   inherit version;
 
   # https://github.com/grafana/tanka/releases/latest
-  # https://github.com/grafana/tanka/releases/tag/v0.13.0
-  # nix-prefetch-url --unpack https://github.com/grafana/tanka/archive/v0.13.0.tar.gz
+  # https://github.com/grafana/tanka/releases/tag/v0.14.0
+  # nix-prefetch-url --unpack https://github.com/grafana/tanka/archive/v0.14.0.tar.gz
   src = fetchFromGitHub {
     owner = "grafana";
     repo = "tanka";
     rev = "v${version}";
-    sha256 = "1vmid8fjnv6hai6629n0mf1bf36rpzbqc23gf1mj3rq38xd02zf0";
+    sha256 = "0cqzr39c2y601zayak2z5nlp3xm0j23xfndpywvxc2x0hasy2qfb";
   };
 
-  vendorSha256 = "BnhKrrPgIQQMJkYley2/LmNRcAGOkpM4jpvREF4xIt8=";
+  vendorSha256 = "vpm2y/CxRNWkz6+AOMmmZH5AjRQWAa6WD5Fnx5lqJYw=";
 
   doCheck = false;
 
-  buildFlagsArray = [ "-ldflags=-s -w -X main.Version=${version}" ];
+  # https://github.com/grafana/tanka/blob/v0.14.0/Makefile#L17
+  buildFlagsArray = [ "-ldflags=-s -w -extldflags \"-static\" -X github.com/grafana/tanka/pkg/tanka.CURRENT_VERSION=${version}" ];
 
   nativeBuildInputs = [ installShellFiles ];
 
