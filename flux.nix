@@ -1,27 +1,27 @@
 { buildGoModule, fetchFromGitHub, lib, installShellFiles }:
 
-let version = "0.7.7";
+let version = "0.8.0";
 in buildGoModule {
   pname = "flux2";
   inherit version;
 
   # https://github.com/fluxcd/flux2/releases/latest
-  # https://github.com/fluxcd/flux2/releases/tag/v0.7.7
-  # nix-prefetch-url --unpack https://github.com/fluxcd/flux2/archive/v0.7.7.tar.gz
+  # https://github.com/fluxcd/flux2/releases/tag/v0.8.0
+  # nix-prefetch-url --unpack https://github.com/fluxcd/flux2/archive/v0.8.0.tar.gz
   src = fetchFromGitHub {
     owner = "fluxcd";
     repo = "flux2";
     rev = "v${version}";
-    sha256 = "13vd0lw51w2h1yz50xgbqs8h8x1jyjd9c7m17xjzbfxdg9pyxk1d";
+    sha256 = "1k7zcn8l60qfgiixkjcmp94w87w88n475mmhf58vl5pfz21p9vky";
   };
 
-  vendorSha256 = "xwzeM+urimzbU7Mma/MjnZUrpxnTKqvEXcHP0C/GEZI=";
+  vendorSha256 = "fVtyWXa/E1U0+o7snNlWTLC7o/sDWDLFmvLnf8jv0Zs=";
 
   subPackages = [ "cmd/flux" ];
 
   doCheck = false;
 
-  # https://github.com/fluxcd/flux2/blob/v0.7.7/.goreleaser.yml#L6
+  # https://github.com/fluxcd/flux2/blob/v0.8.0/.goreleaser.yml#L6
   buildFlagsArray = [ "-ldflags=-s -w -X main.VERSION=${version}" ];
 
   nativeBuildInputs = [ installShellFiles ];
