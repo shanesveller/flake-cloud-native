@@ -11,6 +11,10 @@
       overlay = ./overlay.nix;
       systems = [ "x86_64-darwin" "x86_64-linux" ];
     } // {
+      defaultPackage = {
+        x86_64-darwin = self.legacyPackages.x86_64-darwin.all;
+        x86_64-linux = self.legacyPackages.x86_64-linux.all;
+      };
       overlay = import ./overlay.nix;
     };
 }
