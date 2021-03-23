@@ -1,20 +1,20 @@
 { buildGoModule, fetchFromGitHub, lib }:
-let version = "2.2.0";
+let version = "2.3.0";
 in buildGoModule {
   pname = "nova";
   inherit version;
 
   # https://github.com/FairwindsOps/nova/releases/latest
-  # https://github.com/FairwindsOps/nova/releases/tag/2.2.0
-  # nix-prefetch-url --unpack https://github.com/FairwindsOps/nova/archive/2.2.0.tar.gz
+  # https://github.com/FairwindsOps/nova/releases/tag/2.3.0
+  # nix-prefetch-url --unpack https://github.com/FairwindsOps/nova/archive/2.3.0.tar.gz
   src = fetchFromGitHub {
     owner = "FairwindsOps";
     repo = "nova";
     rev = version;
-    sha256 = "1br75af33fjllaf1lj4hza2b4mvvqr9m49gy0r7p480fmc8x8j39";
+    sha256 = "0c8bm406r44s8nxw41xdch04r1q1andpbq4lgy9h2nhfbcd48bsv";
   };
 
-  vendorSha256 = "Lvit6/6fhbGp7flYzRBUMUSOsmhTYYvmXCCFN9yRaWI=";
+  vendorSha256 = "2DK5P0szp9R9jt7MYJZB+gV8DwWrsrG3BOvDekN7cbI=";
 
   subPackages = [ "." ];
 
