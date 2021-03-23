@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
+  inputs.nixpkgs.url = "nixpkgs/nixpkgs-unstable";
 
   outputs = { self, flake-utils, nixpkgs }:
     flake-utils.lib.simpleFlake {
