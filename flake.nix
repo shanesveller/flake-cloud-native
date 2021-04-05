@@ -3,6 +3,7 @@
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+  inputs.master.url = "nixpkgs/master";
 
   outputs = { self, flake-utils, nixpkgs }:
     flake-utils.lib.simpleFlake {
