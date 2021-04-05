@@ -1,17 +1,17 @@
 { buildGoModule, fetchFromGitHub, lib, installShellFiles }:
-let version = "0.17.0";
+let version = "0.17.1";
 in buildGoModule {
   pname = "tkn";
   inherit version;
 
   # https://github.com/tektoncd/cli/releases/latest
-  # https://github.com/tektoncd/cli/releases/tag/v0.17.0
-  # nix-prefetch-url --unpack https://github.com/tektoncd/cli/archive/v0.17.0.tar.gz
+  # https://github.com/tektoncd/cli/releases/tag/v0.17.1
+  # nix-prefetch-url --unpack https://github.com/tektoncd/cli/archive/v0.17.1.tar.gz
   src = fetchFromGitHub {
     owner = "tektoncd";
     repo = "cli";
     rev = "v${version}";
-    sha256 = "1xxz41d3zwyh7b8slh13xq06mhl22hzwffx94isfngz4mjsgcka5";
+    sha256 = "08skfixdankwb7d3vg1gfnw15gnwyhrflab4m38dr51bkm4161f7";
   };
 
   vendorSha256 = null;
@@ -20,7 +20,7 @@ in buildGoModule {
 
   doCheck = false;
 
-  # https://github.com/tektoncd/cli/blob/v0.17.0/.goreleaser.yml#L18
+  # https://github.com/tektoncd/cli/blob/v0.17.1/.goreleaser.yml#L18
   buildFlagsArray = [
     "-ldflags=-s -w -X github.com/tektoncd/cli/pkg/cmd/version.clientVersion=${version}"
   ];
